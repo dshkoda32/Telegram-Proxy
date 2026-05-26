@@ -120,8 +120,8 @@ sed -i "s/^crypto_pending_buffer = .*/crypto_pending_buffer = $BUF_CRYPTO/" "$CO
 grep -q '^crypto_pending_buffer' "$CONFIG_FILE" || sed -i "/^\[general\]/a crypto_pending_buffer = $BUF_CRYPTO" "$CONFIG_FILE"
 
 # Разрешаем другие домены для маскировки TLS
-#sed -i 's/^unknown_sni_action = .*/unknown_sni_action = "mask"/' "$CONFIG_FILE"
-#grep -q '^unknown_sni_action' "$CONFIG_FILE" || sed -i '/^\[censorship\]/a unknown_sni_action = "mask"' "$CONFIG_FILE"
+sed -i 's/^unknown_sni_action = .*/unknown_sni_action = "mask"/' "$CONFIG_FILE"
+grep -q '^unknown_sni_action' "$CONFIG_FILE" || sed -i '/^\[censorship\]/a unknown_sni_action = "mask"' "$CONFIG_FILE"
 
 # Рабочая директория telemt
 mkdir -p /var/lib/telemt
